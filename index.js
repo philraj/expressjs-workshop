@@ -79,7 +79,7 @@ app.get('/contents', function(req, res) {
         <h3 class="content-item__title">
           <a href="` + content.url + `">` + content.title + `</a>
         </h3>
-        <p>Created by` + content.user.username + `</p>
+        <p>Created by ` + content.user.username + `</p>
       </li>`
     })
         
