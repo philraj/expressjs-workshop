@@ -10,6 +10,34 @@ app.get('/hello/:firstName', function (req, res) {
   res.send("<h1>Hello " + req.params.firstName + "!</h1>");
 });
 
+//exercise 3
+app.get('/op/:operation/:number1/:number2', function(req, res) {
+  var result = {
+    operator: req.params.operation,
+    firstOperand: Number(req.params.number1),
+    secondOperand: Number(req.params.number2)
+  }
+  
+  switch (result.operator) {
+    case 'add':
+      result.solution = result.firstOperand + result.secondOperand;
+      break;
+    case 'sub':
+      result.solution = result.firstOperand - result.secondOperand;
+      break;
+    case 'mult':
+      result.solution = result.firstOperand * result.secondOperand;
+      break;
+    case 'div':
+      result.solution = result.firstOperand / result.secondOperand;
+      break;
+    default:
+      res.sendStatus(400);
+      return;
+  }
+  
+  res.json(result);
+});
 
 /* YOU DON'T HAVE TO CHANGE ANYTHING BELOW THIS LINE :) */
 
