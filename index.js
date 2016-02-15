@@ -5,8 +5,10 @@ app.get('/hello', function (req, res) {
   res.send('<html><body><h1>Hello World!</h1></body></html>');
 });
 
-
-
+/*Create a web server that can listen to requests for /hello/:firstName, and respond with some HTML that says <h1>Hello _name_!</h1>. For example, if a client requests /hello/John, the server should respond with <h1>Hello John!</h1>*/
+app.get('/hello/:firstName', function (req, res) {
+  res.send("<h1>Hello " + req.params.firstName + "!</h1>");
+});
 
 
 /* YOU DON'T HAVE TO CHANGE ANYTHING BELOW THIS LINE :) */
