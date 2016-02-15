@@ -116,6 +116,18 @@ app.get('/contents', function(req, res) {
   })
 });
 
+
+
+//exercise 5
+app.get('/createContent', function(req, res) {
+  var options = {root: '/home/ubuntu/workspace'};
+  
+  res.sendFile('./form.html', options);
+})
+
+
+
+//sequelize helper functions
 function createNewUser (name, pass, email) {
   return User.create({
     username: name,
