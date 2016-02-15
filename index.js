@@ -1,5 +1,6 @@
 var express = require('express');
 var util = require('util');
+var bodyParser = require('body-parser');
 var app = express();
 
 //exercise 1
@@ -110,7 +111,8 @@ app.get('/contents', function(req, res) {
     })
         
     html += `</ul>
-          </div>`
+          </div>
+          <a href="/createContent">Add content!</a>`
           
     res.send(html);
   })
@@ -123,8 +125,19 @@ app.get('/createContent', function(req, res) {
   var options = {root: '/home/ubuntu/workspace'};
   
   res.sendFile('./form.html', options);
-})
+});
 
+
+
+//exercise 6
+app.use('/createContent', bodyParser.urlencoded());
+
+app.post('/createContent', function(req, res) {
+  createNewContent(1, req.body.url, req.body.title)
+  .then(function () {
+    res.redirect(301, '/contents');
+  });
+});
 
 
 //sequelize helper functions
